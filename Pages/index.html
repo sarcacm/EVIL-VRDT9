@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EVIL VRDT9 · Mistaken</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      padding: 2rem 1.5rem;
+      line-height: 1.5;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark {
+      background: #1a1d23;
+      color: #d0d4dc;
+    }
+
+    body.dark .evil-container {
+      background: #242830;
+      box-shadow: 0 20px 60px -12px rgba(0, 0, 0, 0.4);
+      border: 1px solid #2d313a;
+    }
+
+    body.dark .evil-header { border-bottom-color: #2d313a; }
+    body.dark .evil-title h1 { background: linear-gradient(135deg, #c8d0dc, #8a9ab0); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    body.dark .evil-title .badge { background: #2d313a; color: #8a9ab0; }
+    body.dark .evil-meta { color: #8a9ab0; }
+    body.dark .evil-meta i { color: #6a8aaa; }
+    body.dark .stat { background: #1a1d23; color: #8a9ab0; }
+    body.dark .stat i { color: #6a8aaa; }
+    body.dark .btn-primary { background: #5865F2; color: white; }
+    body.dark .btn-primary:hover { background: #4752c4; }
+    body.dark .btn-secondary { background: #2d313a; color: #c8d0dc; }
+    body.dark .btn-secondary:hover { background: #3a3f4a; }
+    body.dark .btn-secondary i { color: #8a9ab0; }
+    body.dark .status-pill { background: #1a2a1a; color: #5aaa6a; }
+    body.dark .status-pill i { color: #5aaa6a; }
+    body.dark .cog-header h2 { color: #c8d0dc; }
+    body.dark .cog-header h2 i { color: #6a8ad4; }
+    body.dark .cog-header .cog-count { background: #2d313a; color: #8a9ab0; }
+    body.dark .command-card { background: #1e222a; border-color: #2d313a; }
+    body.dark .command-card:hover { border-color: #6a8ad4; background: #242830; }
+    body.dark .command-card .cmd-name { color: #c8d0dc; }
+    body.dark .command-card .cmd-name i { color: #6a7a8a; }
+    body.dark .command-card .cmd-desc { color: #8a9ab0; }
+    body.dark .command-card .cmd-restriction { background: #2d313a; color: #8a9ab0; }
+    body.dark .command-card .cmd-restriction.owner { background: #2a1a2a; color: #aa7aaa; border-color: #3a2a3a; }
+    body.dark .command-card .cmd-restriction.server { background: #1a2a2a; color: #6aaaca; border-color: #2a3a3a; }
+    body.dark .command-card .cmd-restriction.both { background: #1a2a1a; color: #7aaa5a; border-color: #2a3a2a; }
+    body.dark .footer-evil { border-top-color: #2d313a; color: #6a7a8a; }
+    body.dark .footer-evil .evil-sign { color: #8a9ab0; }
+    body.dark .footer-evil i { color: #6a7a8a; }
+    body.dark .footer-evil a { color: #6a8ad4; }
+    body.dark .theme-btn { background: #2d313a; color: #8a9ab0; border: 1px solid #3a3f4a; }
+    body.dark .theme-btn:hover { background: #3a3f4a; }
+
+    body.light {
+      background: #f4f6f9;
+      color: #1e1e2a;
+    }
+
+    body.light .evil-container {
+      background: #ffffff;
+      box-shadow: 0 20px 60px -12px rgba(0, 0, 0, 0.10), 0 4px 18px rgba(0, 0, 0, 0.05);
+      border: none;
+    }
+
+    body.light .evil-header { border-bottom-color: #eef0f4; }
+    body.light .evil-title h1 { background: linear-gradient(135deg, #2a2a3a, #4a4a6a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    body.light .evil-title .badge { background: #eef0f4; color: #4a4a6a; }
+    body.light .evil-meta { color: #6a6a82; }
+    body.light .evil-meta i { color: #5a6a9a; }
+    body.light .stat { background: #f4f6f9; color: #4a4a6a; }
+    body.light .stat i { color: #5a6a9a; }
+    body.light .btn-primary { background: #5865F2; color: white; }
+    body.light .btn-primary:hover { background: #4752c4; }
+    body.light .btn-secondary { background: #eef0f4; color: #2a2a3a; }
+    body.light .btn-secondary:hover { background: #e2e5eb; }
+    body.light .btn-secondary i { color: #6a6a82; }
+    body.light .status-pill { background: #e8f5e9; color: #2e7d32; }
+    body.light .status-pill i { color: #2e7d32; }
+    body.light .cog-header h2 { color: #2a2a3a; }
+    body.light .cog-header h2 i { color: #5865F2; }
+    body.light .cog-header .cog-count { background: #eef0f4; color: #6a6a82; }
+    body.light .command-card { background: #f8f9fc; border-color: #eef0f4; }
+    body.light .command-card:hover { border-color: #5865F2; background: #ffffff; }
+    body.light .command-card .cmd-name { color: #1e1e2a; }
+    body.light .command-card .cmd-name i { color: #8a8aa0; }
+    body.light .command-card .cmd-desc { color: #6a6a82; }
+    body.light .command-card .cmd-restriction { background: #eef0f4; color: #6a6a82; }
+    body.light .command-card .cmd-restriction.owner { background: #f3eef4; color: #8a5a8a; border-color: #e8dce8; }
+    body.light .command-card .cmd-restriction.server { background: #eef4f8; color: #4a7a8a; border-color: #dce8ee; }
+    body.light .command-card .cmd-restriction.both { background: #f0f4e8; color: #5a7a4a; border-color: #e0e8d4; }
+    body.light .footer-evil { border-top-color: #eef0f4; color: #8a8aa0; }
+    body.light .footer-evil .evil-sign { color: #4a4a6a; }
+    body.light .footer-evil i { color: #8a8aa0; }
+    body.light .footer-evil a { color: #5865F2; }
+    body.light .theme-btn { background: #eef0f4; color: #4a4a6a; border: 1px solid #d0d4dc; }
+    body.light .theme-btn:hover { background: #dce0e8; }
+
+    body.obsidian {
+      background: #0a0a0a;
+      color: #b0b0b0;
+    }
+
+    body.obsidian .evil-container {
+      background: #0d0d0d;
+      box-shadow: 0 20px 60px -12px rgba(0, 0, 0, 0.8);
+      border: 1px solid #1a1a1a;
+    }
+
+    body.obsidian .evil-header { border-bottom-color: #1a1a1a; }
+    body.obsidian .evil-title h1 { background: linear-gradient(135deg, #a0a0a0, #707070); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    body.obsidian .evil-title .badge { background: #1a1a1a; color: #808080; }
+    body.obsidian .evil-meta { color: #707070; }
+    body.obsidian .evil-meta i { color: #505050; }
+    body.obsidian .stat { background: #0a0a0a; color: #707070; }
+    body.obsidian .stat i { color: #505050; }
+    body.obsidian .btn-primary { background: #333333; color: #d0d0d0; }
+    body.obsidian .btn-primary:hover { background: #444444; box-shadow: none; }
+    body.obsidian .btn-secondary { background: #1a1a1a; color: #909090; }
+    body.obsidian .btn-secondary:hover { background: #2a2a2a; }
+    body.obsidian .btn-secondary i { color: #707070; }
+    body.obsidian .status-pill { background: #0a1a0a; color: #4a8a4a; }
+    body.obsidian .status-pill i { color: #4a8a4a; }
+    body.obsidian .cog-header h2 { color: #a0a0a0; }
+    body.obsidian .cog-header h2 i { color: #555555; }
+    body.obsidian .cog-header .cog-count { background: #1a1a1a; color: #707070; }
+    body.obsidian .command-card { background: #0f0f0f; border-color: #1a1a1a; }
+    body.obsidian .command-card:hover { border-color: #444444; background: #141414; }
+    body.obsidian .command-card .cmd-name { color: #b0b0b0; }
+    body.obsidian .command-card .cmd-name i { color: #505050; }
+    body.obsidian .command-card .cmd-desc { color: #707070; }
+    body.obsidian .command-card .cmd-restriction { background: #1a1a1a; color: #707070; }
+    body.obsidian .command-card .cmd-restriction.owner { background: #1a0a1a; color: #8a5a8a; border-color: #2a1a2a; }
+    body.obsidian .command-card .cmd-restriction.server { background: #0a1a1a; color: #4a7a8a; border-color: #1a2a2a; }
+    body.obsidian .command-card .cmd-restriction.both { background: #0a1a0a; color: #5a7a4a; border-color: #1a2a1a; }
+    body.obsidian .footer-evil { border-top-color: #1a1a1a; color: #505050; }
+    body.obsidian .footer-evil .evil-sign { color: #707070; }
+    body.obsidian .footer-evil i { color: #505050; }
+    body.obsidian .footer-evil a { color: #666666; }
+    body.obsidian .theme-btn { background: #1a1a1a; color: #707070; border: 1px solid #2a2a2a; }
+    body.obsidian .theme-btn:hover { background: #2a2a2a; }
+
+    .evil-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      border-radius: 2rem;
+      padding: 2.2rem 2.2rem 1.8rem;
+      position: relative;
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .evil-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.5rem;
+      margin-bottom: 2.2rem;
+      padding-bottom: 1.2rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .evil-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .evil-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #0e1a30;
+      border: 1px solid #2a4a7a;
+      transform: rotate(-4deg);
+    }
+
+    .evil-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .evil-title h1 {
+      font-weight: 900;
+      font-size: 2.2rem;
+      letter-spacing: -0.02em;
+      transition: background 0.3s ease;
+    }
+
+    .evil-title .badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 1.2rem;
+      border-radius: 40px;
+      margin-left: 0.5rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: inline-block;
+      vertical-align: middle;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .evil-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: color 0.3s ease;
+    }
+
+    .evil-meta i {
+      width: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .evil-header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .stat i {
+      transition: color 0.3s ease;
+    }
+
+    .top-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-primary {
+      border: none;
+      padding: 0.25rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: 0.15s ease;
+      height: 34px;
+      cursor: pointer;
+    }
+
+    .btn-primary i {
+      font-size: 0.8rem;
+    }
+
+    .btn-secondary {
+      border: none;
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: 0.15s ease;
+      height: 34px;
+      cursor: pointer;
+    }
+
+    .btn-secondary i {
+      font-size: 0.7rem;
+      transition: color 0.3s ease;
+    }
+
+    .status-pill {
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      height: 34px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .status-pill i {
+      font-size: 0.65rem;
+      transition: color 0.3s ease;
+    }
+
+    .theme-selector {
+      display: flex;
+      gap: 0.4rem;
+      margin-left: 0.5rem;
+    }
+
+    .theme-btn {
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.15s ease;
+      background: transparent;
+      height: 28px;
+    }
+
+    .theme-btn.active {
+      border-color: #5865F2 !important;
+      color: #5865F2 !important;
+    }
+
+    .cog-section {
+      margin-bottom: 2rem;
+    }
+
+    .cog-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin: 1.5rem 0 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #eef0f4;
+      transition: border-color 0.3s ease;
+    }
+
+    body.dark .cog-header {
+      border-bottom-color: #2d313a;
+    }
+
+    body.obsidian .cog-header {
+      border-bottom-color: #1a1a1a;
+    }
+
+    .cog-header h2 {
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: color 0.3s ease;
+    }
+
+    .cog-header h2 i {
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .cog-header .cog-count {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.15rem 1rem;
+      border-radius: 40px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .command-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.8rem;
+    }
+
+    .command-card {
+      border-radius: 1.2rem;
+      padding: 0.8rem 1rem;
+      border: 1px solid;
+      transition: 0.15s ease;
+    }
+
+    .command-card .cmd-name {
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.3s ease;
+    }
+
+    .command-card .cmd-name i {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      transition: color 0.3s ease;
+    }
+
+    .command-card .cmd-desc {
+      font-size: 0.75rem;
+      margin: 0.2rem 0 0.3rem;
+      transition: color 0.3s ease;
+    }
+
+    .command-card .cmd-restriction {
+      font-size: 0.55rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.1rem 0.7rem;
+      border-radius: 40px;
+      display: inline-block;
+      margin-top: 0.15rem;
+      border: 1px solid transparent;
+      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .footer-evil {
+      margin-top: 2.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      padding-top: 1.2rem;
+      font-size: 0.8rem;
+      transition: border-color 0.3s ease, color 0.3s ease;
+    }
+
+    .footer-evil .evil-sign {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: color 0.3s ease;
+    }
+
+    .footer-evil i {
+      margin: 0 0.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-evil a {
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .footer-evil a:hover {
+      text-decoration: underline;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 10px;
+      margin-right: 6px;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 1rem; }
+      .evil-container { padding: 1.5rem; }
+      .evil-title h1 { font-size: 1.7rem; }
+      .command-grid { grid-template-columns: 1fr 1fr; }
+      .top-actions { gap: 0.4rem; }
+      .theme-selector { margin-left: 0; }
+      .evil-header-right { width: 100%; justify-content: flex-start; }
+      .status-pill { margin-left: 0; }
+    }
+
+    @media (max-width: 450px) {
+      .command-grid { grid-template-columns: 1fr; }
+      .evil-header { flex-direction: column; align-items: start; }
+      .evil-brand { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body class="dark">
+
+  <div class="evil-container">
+
+    <div class="evil-header">
+      <div class="evil-brand">
+        <div class="evil-icon">
+          <img src="https://raw.githubusercontent.com/sarcacm/EVIL-VRDT9/main/Pages/PFP.webp" alt="EVIL VRDT9 PFP">
+        </div>
+        <div class="evil-title">
+          <h1>EVIL VRDT9 <span class="badge">very evil</span></h1>
+          <div class="evil-meta">
+            <span><i class="fas fa-robot"></i> Discord Bot · v2.0.0</span>
+            <span><i class="fas fa-dice-d6"></i> For Mistaken</span>
+          </div>
+        </div>
+      </div>
+      <div class="evil-header-right">
+        <span class="stat"><i class="fas fa-users"></i> 1.4k+ victims</span>
+        <span class="stat"><i class="fas fa-circle" style="font-size: 0.6rem;"></i> Online</span>
+        <div class="theme-selector">
+          <button class="theme-btn" data-theme="light" title="Light Mode"><i class="fas fa-sun"></i></button>
+          <button class="theme-btn active" data-theme="dark" title="Dark Mode"><i class="fas fa-moon"></i></button>
+          <button class="theme-btn" data-theme="obsidian" title="Obsidian Mode"><i class="fas fa-skull"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <a href="https://www.roblox.com/games/126300585951764/Mistaken" target="_blank" class="btn-primary">
+        <i class="fab fa-roblox"></i> Play Mistaken
+        <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i>
+      </a>
+      <a href="https://github.com/sarcacm/EVIL-VRDT9" target="_blank" class="btn-secondary">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <span class="status-pill">
+        <i class="fas fa-skull"></i> Last Time Being Evil: Just now
+      </span>
+    </div>
+
+    <div class="cog-section">
+      <div class="cog-header">
+        <h2><i class="fas fa-cog"></i> general</h2>
+        <span class="cog-count">6 commands</span>
+      </div>
+      <div class="command-grid">
+        <div class="command-card">
+          <div class="cmd-name">/help <i class="fas fa-question-circle"></i></div>
+          <div class="cmd-desc">List all commands the bot has loaded.</div>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/botinfo <i class="fas fa-info-circle"></i></div>
+          <div class="cmd-desc">Get some useful (or not) information about the bot.</div>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/ping <i class="fas fa-heartbeat"></i></div>
+          <div class="cmd-desc">Check if the bot is alive.</div>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/suggestions-post <i class="fas fa-lightbulb"></i></div>
+          <div class="cmd-desc">Get a random post from the story forum.</div>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/verify <i class="fas fa-check-circle"></i></div>
+          <div class="cmd-desc">(MISTAKEN SERVER ONLY) Verify to gain access to more channels.</div>
+          <span class="cmd-restriction server">server only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/key <i class="fas fa-key"></i></div>
+          <div class="cmd-desc">Enter a key phrase to unlock a secret message.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cog-section">
+      <div class="cog-header">
+        <h2><i class="fas fa-gamepad"></i> fun</h2>
+        <span class="cog-count">9 commands</span>
+      </div>
+      <div class="command-grid">
+        <div class="command-card">
+          <div class="cmd-name">/random-fact <i class="fas fa-lightbulb"></i></div>
+          <div class="cmd-desc">Get a random fact about EVIL VRDT9.</div>
+          <span class="cmd-restriction">cooldown: 5s</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/coinflip <i class="fas fa-coins"></i></div>
+          <div class="cmd-desc">Make a coin flip, but give your bet before.</div>
+          <span class="cmd-restriction">cooldown: 5s</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/rps <i class="fas fa-hand-rock"></i></div>
+          <div class="cmd-desc">Play the rock paper scissors game against the bot.</div>
+          <span class="cmd-restriction">cooldown: 5s</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/freerobux <i class="fas fa-dollar-sign"></i></div>
+          <div class="cmd-desc">omg i got 99999999999</div>
+          <span class="cmd-restriction">cooldown: 10s</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/rating <i class="fas fa-trophy"></i></div>
+          <div class="cmd-desc">Check to see how pro/noobie you are.</div>
+          <span class="cmd-restriction">cooldown: 5s</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/ask <i class="fas fa-comment-dots"></i></div>
+          <div class="cmd-desc">Ask any question to EVIL VRDT9.</div>
+          <span class="cmd-restriction">cooldown: 10s</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/icegubby <i class="fas fa-snowflake"></i></div>
+          <div class="cmd-desc">Get a random ice gubby image.</div>
+          <span class="cmd-restriction">cooldown: 3s</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/clear_memory <i class="fas fa-eraser"></i></div>
+          <div class="cmd-desc">Clear Evil VRDT9's memory of you.</div>
+          <span class="cmd-restriction">cooldown: 5s</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/my_stats <i class="fas fa-chart-bar"></i></div>
+          <div class="cmd-desc">See your conversation stats with Evil VRDT9.</div>
+          <span class="cmd-restriction">cooldown: 5s</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cog-section">
+      <div class="cog-header">
+        <h2><i class="fas fa-wrench"></i> maintenance</h2>
+        <span class="cog-count">2 commands</span>
+      </div>
+      <div class="command-grid">
+        <div class="command-card">
+          <div class="cmd-name">/maintenance <i class="fas fa-power-off"></i></div>
+          <div class="cmd-desc">BOT OWNER ONLY!!! Toggle maintenance mode.</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/maintenance-status <i class="fas fa-info-circle"></i></div>
+          <div class="cmd-desc">BOT OWNER ONLY!!! Check maintenance mode status.</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cog-section">
+      <div class="cog-header">
+        <h2><i class="fas fa-clock"></i> scheduled permissions</h2>
+        <span class="cog-count">8 commands</span>
+      </div>
+      <div class="command-grid">
+        <div class="command-card">
+          <div class="cmd-name">/set-perms-channel <i class="fas fa-hashtag"></i></div>
+          <div class="cmd-desc">SERVER/BOT OWNER ONLY!!! Set the channel for scheduled permissions.</div>
+          <span class="cmd-restriction both">server or bot owner</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/set-perms-role <i class="fas fa-users"></i></div>
+          <div class="cmd-desc">SERVER/BOT OWNER ONLY!!! Set the role for scheduled permissions.</div>
+          <span class="cmd-restriction both">server or bot owner</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/set-permission <i class="fas fa-sliders-h"></i></div>
+          <div class="cmd-desc">SERVER/BOT OWNER ONLY!!! Set individual permission values.</div>
+          <span class="cmd-restriction both">server or bot owner</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/set-all-perms <i class="fas fa-sliders-h"></i></div>
+          <div class="cmd-desc">SERVER/BOT OWNER ONLY!!! Set all permissions at once.</div>
+          <span class="cmd-restriction both">server or bot owner</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/apply-perms <i class="fas fa-play"></i></div>
+          <div class="cmd-desc">SERVER/BOT OWNER ONLY!!! Manually apply Friday permissions.</div>
+          <span class="cmd-restriction both">server or bot owner</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/check-perms <i class="fas fa-search"></i></div>
+          <div class="cmd-desc">SERVER/BOT OWNER ONLY!!! Check current permissions.</div>
+          <span class="cmd-restriction both">server or bot owner</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/reset-perms <i class="fas fa-undo"></i></div>
+          <div class="cmd-desc">SERVER/BOT OWNER ONLY!!! Reset perms to default.</div>
+          <span class="cmd-restriction both">server or bot owner</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/perms-status <i class="fas fa-info-circle"></i></div>
+          <div class="cmd-desc">SERVER/BOT OWNER ONLY!!! Get the current status.</div>
+          <span class="cmd-restriction both">server or bot owner</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cog-section">
+      <div class="cog-header">
+        <h2><i class="fas fa-crown"></i> sarcacm only</h2>
+        <span class="cog-count">14 commands</span>
+      </div>
+      <div class="command-grid">
+        <div class="command-card">
+          <div class="cmd-name">/sync <i class="fas fa-sync"></i></div>
+          <div class="cmd-desc">SARCACM ONLY!!! Fixes the slash commands.</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/unsync <i class="fas fa-sync-alt"></i></div>
+          <div class="cmd-desc">SARCACM ONLY!!! unsyncs the slash commands.</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/load <i class="fas fa-upload"></i></div>
+          <div class="cmd-desc">SARCACM ONLY!!! Load a cog</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/unload <i class="fas fa-download"></i></div>
+          <div class="cmd-desc">SARCACM ONLY!!! unloads a cog.</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/reload <i class="fas fa-redo"></i></div>
+          <div class="cmd-desc">SARCACM ONLY!!! reloads a cog.</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/shutdown <i class="fas fa-power-off"></i></div>
+          <div class="cmd-desc">SARCACM ONLY!!! Make the bot go offline</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/say <i class="fas fa-comment"></i></div>
+          <div class="cmd-desc">SARCACM ONLY!!! Make the bot say something</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/embed <i class="fas fa-window-maximize"></i></div>
+          <div class="cmd-desc">SARCACM ONLY!!! Send an embed</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/invite <i class="fas fa-link"></i></div>
+          <div class="cmd-desc">SARCACM ONLY!!! Send a invite link for guilds</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/kick <i class="fas fa-user-minus"></i></div>
+          <div class="cmd-desc">SARCACM ONLY!!! Kick a user out of the server.</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/set-nick <i class="fas fa-pencil-alt"></i></div>
+          <div class="cmd-desc">SARCACM ONLY!!! Change the nickname of a user on a server.</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/ban <i class="fas fa-user-slash"></i></div>
+          <div class="cmd-desc">SARCACM ONLY!!! Bans a user from the server.</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/hackban <i class="fas fa-user-shield"></i></div>
+          <div class="cmd-desc">SARCACM ONLY!!! Bans a user without the user having to be in the server.</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+        <div class="command-card">
+          <div class="cmd-name">/archive <i class="fas fa-archive"></i></div>
+          <div class="cmd-desc">SARCACM ONLY!!! Archives in a text file the last messages with a chosen limit.</div>
+          <span class="cmd-restriction owner">bot owner only</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-evil">
+      <span class="evil-sign">EVIL VRDT9 · 2026</span>
+      <span><i class="fas fa-code"></i> Template by kkrypt0nn · Cogs by sarcacm</span>
+      <a href="https://github.com/sarcacm/EVIL-VRDT9" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('.theme-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var theme = this.dataset.theme;
+        document.body.className = theme;
+        document.querySelectorAll('.theme-btn').forEach(function(b) {
+          b.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
