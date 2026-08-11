@@ -14,7 +14,7 @@ My Official Page: https://sarcacm.github.io/EVIL-VRDT9/
 Created by: @sarcacm
 ```
 
-# VERSION 2.0.4
+# VERSION 2.0.6
 - Random fact cooldown reduced: 5s -> 2s
 - Coinflip cooldown reduced: 5s -> 1s
 - RPS cooldown reduced: 5s -> 2s
@@ -25,7 +25,7 @@ Created by: @sarcacm
 - clear-memory cooldown reduced: 5s -> 1s
 - my-stats cooldown reduced: 5s -> 1.75s 
 
-# VERSION 2.0.6
+# VERSION 2.0.9
 - Made the Scheduled Permissions commands mistaken server exclusive (might be temporary)
 - Fixed Scheduled Permissions not making the permissions false when it isn't friday.
 - Made Archive and Invite be general commands.
