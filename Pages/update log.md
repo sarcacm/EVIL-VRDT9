@@ -29,3 +29,6 @@ Created by: @sarcacm
 - Made the Scheduled Permissions commands mistaken server exclusive (might be temporary)
 - Fixed Scheduled Permissions not making the permissions false when it isn't friday.
 - Made Archive and Invite be general commands.
+
+# VERSION 2.1.0
+- Added a command to see what servers EVIL VRDT9 is in.
