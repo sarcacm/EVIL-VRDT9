@@ -1,6 +1,7 @@
 # VERSION 2.0.1
 - Added a six seven command
 - Added a three-layer-dip-stack command (slash command just won't appear for some reason) <- nevermind it does.
+
 # VERSION 2.0.2
 - Added a rotation for EVIL VRDT9's activities (Watching, Listening, Playing, and Competing in)
 - Updated EVIL VRDT9's description:
@@ -12,3 +13,14 @@ My Official Page: https://sarcacm.github.io/EVIL-VRDT9/
 
 Created by: @sarcacm
 ```
+
+# VERSION 2.0.6
+- Random fact cooldown reduced: 5s -> 2s
+- Coinflip cooldown reduced: 5s -> 1s
+- RPS cooldown reduced: 5s -> 2s
+- free-robux cooldown reduced: 10s -> 1.5s
+- rating cooldown reduced: 5s -> 1.5s
+- ask cooldown reduced: 10s -> 5s
+- ice-gubby cooldown reduced: 3s -> 1.25s
+- clear-memory cooldown reduced: 5s -> 1s
+- my-stats cooldown reduced: 5s -> 1.75s 
