@@ -8,7 +8,7 @@
   - Old: "hi guys I'm evil and pls friend me..."
   - New includes: Roblox account, YouTube channel, Official Page links
 
-# VERSION 2.0.6
+# VERSION 2.0.3
 - Random fact cooldown reduced: 5s -> 2s
 - Coinflip cooldown reduced: 5s -> 1s
 - RPS cooldown reduced: 5s -> 2s
@@ -19,13 +19,13 @@
 - clear-memory cooldown reduced: 5s -> 1s
 - my-stats cooldown reduced: 5s -> 1.75s
 
-# VERSION 2.0.9
+# VERSION 2.0.4
 - Made the Scheduled Permissions commands mistaken server exclusive (might be temporary)
 - Fixed Scheduled Permissions not making the permissions false when it isn't friday
 - Made Archive and Invite be general commands
 - Added reset-perms command to reset permissions to default (view_channel only)
 
-# VERSION 2.1.0
+# VERSION 2.0.5
 - Added `/servers` command to see what servers EVIL VRDT9 is in
 - Added `/lifetime` command to check bot uptime
 - Added `/perms-status` command to view scheduled permissions configuration
